@@ -9,6 +9,18 @@
         <br/>
         <new-component :class="['active']"></new-component>
         <p :style="styleObj">{{fullname}}</p>
+        <input type="number" v-model.number="age"/>
+        Your Age is {{age}}
+        <br/>
+        <span style = "font-size:25px;">Enter Message:</span> <input v-model.lazy = "msg">
+        <br/>
+        Will display after done input : Your Message is {{msg}}
+        <br/>
+        <button v-on:click.once="say('High')">Click Once</button>
+        <form>
+          <input type="text" v-model="firstname" v-on:keyup.enter = "say('Enter')"/>
+          <input type="submit" @click.prevent="say('Prevent')"/>
+        </form>
   </div>
 </template>
 
@@ -26,12 +38,18 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       firstname: 'van',
       lastname: 'thai',
+      age: 0,
       isActive: true,
       isValid: true,
       styleObj: {
         color: 'pink',
         fontSize: '30px'
       }
+    }
+  },
+  methods: {
+    say(text) {
+      alert(text)
     }
   },
   computed: {
