@@ -21,6 +21,15 @@
           <input type="text" v-model="firstname" v-on:keyup.enter = "say('Enter')"/>
           <input type="submit" @click.prevent="say('Prevent')"/>
         </form>
+        <p v-if="isShow">Show : True</p>
+        <p v-else>Show : False</p>
+        <p v-show="isShow">Show True</p>
+        <label>Input Fruit <input type="text" v-on:keyup.enter = "addFruit" placeholder = "Enter Fruits Names"/></label>
+        <ul>
+          <li v-for="(fruit, idx) in fruits" :key="idx">
+            {{fruit}}
+          </li>
+        </ul>
   </div>
 </template>
 
@@ -39,17 +48,25 @@ export default {
       firstname: 'van',
       lastname: 'thai',
       age: 0,
+      isShow: false,
       isActive: true,
       isValid: true,
       styleObj: {
         color: 'pink',
         fontSize: '30px'
-      }
+      },
+      fruits: ['apple', 'banana']
     }
   },
   methods: {
     say(text) {
       alert(text)
+    },
+    addFruit(event) {
+      if (event.target.value) {
+        this.fruits.push(event.target.value)
+        event.target.value = ''
+      }
     }
   },
   computed: {
@@ -84,6 +101,11 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+  padding: 5px 10px;
+  color: #FFF;
+  border: 1px dashed #FFF;
+  background: palevioletred;
+  cursor: pointer;
 }
 a {
   color: #42b983;

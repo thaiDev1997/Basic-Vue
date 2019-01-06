@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button @click="test1()">Click 1</button>
+    <button @click="test1()">Tutorialspoint.com</button>
     <button @click="test2()">Click 2</button>
     <button @click="test3()">Click 3</button>
     <button @click="test4()">Click 4</button>
@@ -68,5 +68,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app > button {
+  background-color: crimson;
+  color: #FFF;
+  padding: 5px 10px;
+  border: 1px solid transparent;
 }
 </style>
